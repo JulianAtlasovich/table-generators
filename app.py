@@ -24,11 +24,10 @@ def create_xls(dict_data):
     df = pd.DataFrame(columns=columns)    
     with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         df.to_excel(writer, sheet_name='Sheet1',index=False)
-        writer.close()
     return buffer
 
 st.title("Table Generator")
-data = st.file_uploader("Upload a CSV file", type=["csv"])
+data = st.file_uploader("Upload a CSV file with columns 'column_name','display_name','input_type' and 'data_type'", type=["csv"])
 
 
 if data:
